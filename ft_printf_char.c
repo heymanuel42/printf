@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 21:43:48 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/27 23:23:46 by ejanssen         ###   ########.fr       */
+/*   Created: 2022/10/27 23:20:17 by ejanssen          #+#    #+#             */
+/*   Updated: 2022/10/27 23:20:31 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "libft/libft.h"
-
-int	ft_printf(const char *str, ...);
-int	ft_print_char(char data);
-int	ft_print_dec(int data);
-int	ft_print_str(void *data);
-
-#endif
+int	ft_print_char(char data)
+{
+	ft_putchar_fd(data, 1);
+	return (1);
+}
