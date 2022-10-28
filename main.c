@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:41:57 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 16:03:04 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:18:23 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 int	main(void)
 {
 	int		length;
-	length = ft_printf("%p","");
+	length = ft_printf("%p\n",1);
+		length = printf("%p\n ",  1);
+
 	//printf("%d\n", length);
 	//length = printf("%p\n","");
 	//printf("%d\n", length);

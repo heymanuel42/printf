@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:03:40 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 16:10:31 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:19:07 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static char	*append(char *str, char c)
 
 	if (str == NULL)
 	{
-		new = malloc(1);
-		new[0] = '\0';
+		new = malloc(2);
+		new[0] = c;
+		new[1] = '\0';
 		return (new);
 	}
 	old_l = ft_strlen(str);
