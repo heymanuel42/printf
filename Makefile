@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+         #
+#    By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:24:29 by ejanssen          #+#    #+#              #
-#    Updated: 2022/10/28 15:54:54 by ejanssen         ###   ########.fr        #
+#    Updated: 2022/10/28 17:15:54 by ejanssen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ $(NAME):$(OBJECTS)
 	cp $(LIBFT_DIR)/$(LIBFT) .
 	mv $(LIBFT_DIR)/$(LIBFT) $@
 	ar -ru $@ $^
+	rm -f $(LIBFT)
 
 .PHONY : $(LIBFT)
 $(LIBFT):
