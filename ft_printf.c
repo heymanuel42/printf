@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:22:24 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/27 23:54:51 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:23:12 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,40 +62,39 @@ static void	build_list(t_list **str_lst, const char *str)
 	}
 }
 
-static int	handle_print(t_list *list, va_list arguments)
+static void	handle_print(t_list *list, va_list args, int *l)
 {
-	char	*elem;
-	int		length;
+	char	*el;
 
-	length = 0;
 	while (list)
 	{
-		elem = (char *)list->content;
-		if (elem[0] == '%')
+		el = (char *)list->content;
+		if (el[0] == '%')
 		{
-			if (elem[1] == '\0')
-				length += ft_print_str("%");
-			else if (elem[ft_strlen((elem)) - 1] == 'c')
-				length += ft_print_char(va_arg(arguments, int));
-			else if (elem[ft_strlen(elem) - 1] == 's')
-				length += ft_print_str(va_arg(arguments, char *));
-			else if (elem[ft_strlen(elem) - 1] == 'd'
-				|| elem[ft_strlen((elem)) - 1] == 'i')
-				length += ft_print_dec(va_arg(arguments, int));
-			else if (elem[ft_strlen(elem) - 1] == 'p')
-				length += ft_print_str(list->content);
-			else if (elem[ft_strlen(elem) - 1] == 'u')
-				length += ft_print_str(list->content);
-			else if (elem[ft_strlen(elem) - 1] == 'x')
-				length += ft_print_str(list->content);
-			else if (elem[ft_strlen(elem) - 1] == 'X')
-				length += ft_print_str(list->content);
+			if (el[1] == '\0')
+				*l += ft_printf_str("%");
+			else if (el[ft_strlen((el)) - 1] == 'c')
+				*l += ft_printf_char(va_arg(args, int));
+			else if (el[ft_strlen(el) - 1] == 's')
+				*l += ft_printf_str(va_arg(args, char *));
+			else if (el[ft_strlen(el) - 1] == 'd'
+				|| el[ft_strlen((el)) - 1] == 'i')
+				*l += ft_printf_dec(va_arg(args, int));
+			else if (el[ft_strlen(el) - 1] == 'p')
+				*l += ft_printf_ptr(va_arg(args, void *));
+			else if (el[ft_strlen(el) - 1] == 'u')
+				*l += ft_printf_unsigned_dec(va_arg(args, unsigned int));
+			else if (el[ft_strlen(el) - 1] == 'x')
+				*l += ft_printf_hex_low(va_arg(args, unsigned int));
+			else if (el[ft_strlen(el) - 1] == 'X')
+				*l += ft_printf_hex_up(va_arg(args, unsigned int));
+			else
+				*l += ft_printf_str(list->content);
 		}
 		else
-			length += ft_print_str(list->content);
+			*l += ft_printf_str(list->content);
 		list = list->next;
 	}
-	return (length);
 }
 
 int	ft_printf(const char *str, ...)
@@ -104,11 +103,13 @@ int	ft_printf(const char *str, ...)
 	t_list	*list;
 	int		length;
 
+	length = 0;
 	(void)g_flags;
 	list = NULL;
 	build_list(&list, str);
 	va_start(arguments, str);
-	length = handle_print(list, arguments);
+	handle_print(list, arguments, &length);
+	va_end(arguments);
 	ft_lstclear(&list, free);
 	return (length);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:24:29 by ejanssen          #+#    #+#              #
-#    Updated: 2022/10/27 23:22:02 by ejanssen         ###   ########.fr        #
+#    Updated: 2022/10/28 15:54:54 by ejanssen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRC 				= ft_printf.c
 SRC					+= ft_printf_char.c
 SRC					+= ft_printf_dec.c
 SRC					+= ft_printf_str.c
+SRC					+= ft_printf_hex.c
+SRC					+= ft_printf_ptr.c
 
 DEPENDENCIES 		= ft_printf.h
 OBJECTS				= $(SRC:.c=.o)
@@ -36,7 +38,7 @@ all:  $(LIBFT) $(NAME)
 $(NAME):$(OBJECTS)
 	cp $(LIBFT_DIR)/$(LIBFT) .
 	mv $(LIBFT_DIR)/$(LIBFT) $@
-	ar r $@ $^
+	ar -ru $@ $^
 
 .PHONY : $(LIBFT)
 $(LIBFT):
