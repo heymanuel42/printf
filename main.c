@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:41:57 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 17:44:28 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/29 09:55:57 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,13 @@ int	main(void)
 {
 	int		length;
 
-	length = ft_printf("%%%%% p\n", NULL);
+	ft_printf("%d hello\n", 3);
+	printf("%+-0123d hello\n", 3);
+	return (0);
+}
+
+/**
+ * length = ft_printf("%%%%% p\n", NULL);
 	length = printf("%%%%% p\n", NULL);
 	printf("%d\n", length);
 	length = printf("%p\n", "");
@@ -36,5 +42,8 @@ int	main(void)
 	ft_printf("%p %p\n", ULONG_MAX, -ULONG_MAX);
 	printf("%p %p\n", LONG_MIN, LONG_MAX);
 	printf("%p %p\n", ULONG_MAX, -ULONG_MAX);
-	return (0);
-}
+	printf("%0-20d hello\n", 3875623);
+	printf("%d\n", ft_atoi("#10d"));
+	ft_printf_padstr(ft_strdup("hello world\n\n"),
+	 ft_strlen("hello world\n\n"), '0');
+*/

@@ -6,7 +6,7 @@
 #    By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:24:29 by ejanssen          #+#    #+#              #
-#    Updated: 2022/10/28 17:15:54 by ejanssen         ###   ########.fr        #
+#    Updated: 2022/10/28 22:50:33 by ejanssen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC					+= ft_printf_dec.c
 SRC					+= ft_printf_str.c
 SRC					+= ft_printf_hex.c
 SRC					+= ft_printf_ptr.c
+SRC					+= ft_printf_padstr.c
 
 DEPENDENCIES 		= ft_printf.h
 OBJECTS				= $(SRC:.c=.o)
@@ -38,7 +39,7 @@ all:  $(LIBFT) $(NAME)
 $(NAME):$(OBJECTS)
 	cp $(LIBFT_DIR)/$(LIBFT) .
 	mv $(LIBFT_DIR)/$(LIBFT) $@
-	ar -ru $@ $^
+	ar -r $@ $^
 	rm -f $(LIBFT)
 
 .PHONY : $(LIBFT)

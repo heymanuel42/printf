@@ -6,7 +6,7 @@
 /*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:22:24 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 17:31:44 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/28 23:34:26 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 
 static char	*g_params = "cspdiuxX";
-static char	*g_flags = "-0.# +";
+//static char	*g_flags = "-0.# +";
 
 static int	ft_parse_param(t_list **list, const char *str, int start)
 {
@@ -61,6 +61,30 @@ static void	build_list(t_list **str_lst, const char *str)
 	}
 }
 
+static	int	handle_d(void *param, int arg)
+{
+	char	*c;
+
+	if (((unsigned char *)param)[1] == '0')
+	{
+		c = ft_itoa(arg);
+		if (((unsigned char *)param)[2] == '-')
+			ft_printf_padstr(c, 10, '0', RIGHT);
+		else if (((unsigned char *)param)[2] == '+')
+			ft_printf_padstr(ft_strjoin("+", c), 10, '0', LEFT);
+	}
+	else if (((unsigned char *)param)[1] == '-')
+	{
+		c = ft_itoa(arg);
+		if (((unsigned char *)param)[2] == '0')
+			ft_printf_padstr(c, 10, '0', RIGHT);
+		else
+			ft_printf_padstr(c, 10, '0', LEFT);
+	}
+	else
+		ft_printf_dec(arg);
+	return (1);
+}
 static int	print(char *data, va_list args)
 {
 	if (data[0] == '%')
@@ -71,7 +95,7 @@ static int	print(char *data, va_list args)
 			return (ft_printf_str(va_arg(args, char *)));
 		else if (data[ft_strlen(data) - 1] == 'd'
 			|| data[ft_strlen(data) - 1] == 'i')
-			return (ft_printf_dec(va_arg(args, int)));
+			return (handle_d(data, va_arg(args, int)));
 		else if (data[ft_strlen(data) - 1] == 'p')
 			return (ft_printf_ptr(va_arg(args, void *)));
 		else if (data[ft_strlen(data) - 1] == 'u')
@@ -94,7 +118,6 @@ int	ft_printf(const char *str, ...)
 	int		length;
 
 	length = 0;
-	(void)g_flags;
 	list = NULL;
 	build_list(&list, str);
 	va_start(arguments, str);

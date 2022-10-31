@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 21:43:48 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 13:31:36 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/28 23:13:30 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,12 @@ int	ft_printf_hex_low(unsigned long data);
 int	ft_printf_hex_up(unsigned long data);
 int	ft_printf_ptr(void *data);
 int	ft_printf_str(void *data);
+
+typedef enum e_padding{
+	LEFT = 1,
+	RIGHT = 2
+}t_padding;
+
+int	ft_printf_padstr(void *data, int n, char c, t_padding padding);
 
 #endif
