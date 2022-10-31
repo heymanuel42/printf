@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:22:24 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 23:34:26 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:26:05 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,22 +69,21 @@ static	int	handle_d(void *param, int arg)
 	{
 		c = ft_itoa(arg);
 		if (((unsigned char *)param)[2] == '-')
-			ft_printf_padstr(c, 10, '0', RIGHT);
+			return (ft_printf_padstr(c, 10, '0', RIGHT));
 		else if (((unsigned char *)param)[2] == '+')
-			ft_printf_padstr(ft_strjoin("+", c), 10, '0', LEFT);
+			return (ft_printf_padstr(ft_strjoin("+", c), 10, '0', LEFT));
 	}
 	else if (((unsigned char *)param)[1] == '-')
 	{
 		c = ft_itoa(arg);
 		if (((unsigned char *)param)[2] == '0')
-			ft_printf_padstr(c, 10, '0', RIGHT);
+			return (ft_printf_padstr(c, 10, '0', RIGHT));
 		else
-			ft_printf_padstr(c, 10, '0', LEFT);
+			return (ft_printf_padstr(c, 10, '0', LEFT));
 	}
-	else
-		ft_printf_dec(arg);
-	return (1);
+	return (ft_printf_dec(arg));
 }
+
 static int	print(char *data, va_list args)
 {
 	if (data[0] == '%')
@@ -114,18 +113,20 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	arguments;
 	t_list	*list;
+	t_list	*tmp;
 	char	*el;
 	int		length;
 
 	length = 0;
 	list = NULL;
 	build_list(&list, str);
+	tmp = list;
 	va_start(arguments, str);
-	while (list)
+	while (tmp)
 	{
-		el = (char *)list->content;
+		el = (char *)tmp->content;
 		length += print(el, arguments);
-		list = list->next;
+		tmp = tmp->next;
 	}
 	va_end(arguments);
 	ft_lstclear(&list, free);

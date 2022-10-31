@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:24:29 by ejanssen          #+#    #+#              #
-#    Updated: 2022/10/28 22:50:33 by ejanssen         ###   ########.fr        #
+#    Updated: 2022/10/31 09:55:00 by ejanssen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,21 +30,13 @@ LIBFT_DIR			= ./libft
 LIBFT				= libft.a
 
 .PHONY: all
-all:  $(LIBFT) $(NAME)
+all: $(NAME)
 
-.c.o:
-	$(CC) -c $(CFLAGS) -o $@ $<
 
-.PHONY: $(NAME)
 $(NAME):$(OBJECTS)
-	cp $(LIBFT_DIR)/$(LIBFT) .
+	$(MAKE) -C $(LIBFT_DIR) bonus
 	mv $(LIBFT_DIR)/$(LIBFT) $@
 	ar -r $@ $^
-	rm -f $(LIBFT)
-
-.PHONY : $(LIBFT)
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) bonus
 
 .PHONY: clean
 clean:

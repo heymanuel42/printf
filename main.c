@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ejanssen <ejanssen@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:41:57 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/29 09:55:57 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/10/31 09:21:01 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(void)
 {
 	int		length;
 
-	ft_printf("%d hello\n", 3);
-	printf("%+-0123d hello\n", 3);
+	length = 0;
+	length = ft_printf("%p", NULL);
+	printf(" %d\n", length);
+	length = printf("%p", NULL);
+	printf(" %d\n", length);
 	return (0);
 }
 
