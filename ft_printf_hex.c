@@ -6,11 +6,10 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:03:40 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/28 16:19:07 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:14:37 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 #include <stdio.h>
 

@@ -6,7 +6,7 @@
 #    By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/24 13:24:29 by ejanssen          #+#    #+#              #
-#    Updated: 2022/10/31 09:55:00 by ejanssen         ###   ########.fr        #
+#    Updated: 2022/11/08 11:17:02 by ejanssen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJECTS				= $(SRC:.c=.o)
 
 NAME				= libftprintf.a
 
-LIBFT_DIR			= ./libft
+LIBFT_DIR			= ../libft
 LIBFT				= libft.a
 
 .PHONY: all

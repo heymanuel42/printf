@@ -6,12 +6,11 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 13:13:30 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/31 09:21:29 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:14:40 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf_ptr(void *data)
 {

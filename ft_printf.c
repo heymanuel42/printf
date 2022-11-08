@@ -6,12 +6,10 @@
 /*   By: ejanssen <ejanssen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:22:24 by ejanssen          #+#    #+#             */
-/*   Updated: 2022/10/31 11:26:05 by ejanssen         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:14:50 by ejanssen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "libft/libft_bonus.h"
 #include "ft_printf.h"
 #include <stdarg.h>
 #include <stdlib.h>
